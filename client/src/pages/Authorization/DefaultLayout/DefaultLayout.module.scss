@@ -4,9 +4,8 @@
     align-items: center;
     height: 100vh;
     background-image: url('../imageAt/login_background.jpg');
-    background-size: cover;
-    // backdrop-filter: blur(1px);
-    // background: white;
+
+    width: 100vw;
 }
 
 .container {
@@ -14,7 +13,6 @@
     // width: 100%;
 
     margin: var(--custommer-header-height) auto 0;
-
 
     // flex: 1;
     // background-color: white;

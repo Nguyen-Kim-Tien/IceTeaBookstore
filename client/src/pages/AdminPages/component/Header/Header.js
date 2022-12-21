@@ -8,7 +8,7 @@ import 'tippy.js/animations/scale.css';
 import 'tippy.js/dist/svg-arrow.css';
 
 import styles from './Header.module.scss';
-import UserOpt from '~/components/UserOption/UserOption';
+import UserOpt from '../UserOption/UserOption';
 import { adminOption, menu } from '../../Constants/Constants';
 
 const cx = classNames.bind(styles);

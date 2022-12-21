@@ -10,11 +10,12 @@ import 'tippy.js/dist/svg-arrow.css';
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-import UserOpt from '~/components/UserOption/UserOption';
+import UserOpt from '../UserOption/UserOption';
 import { useContext, useState } from 'react';
 import { Context } from '~/stores';
 import Price from '~/components/PriceDisplay/Price';
 import Mybutton from '~/components/Button';
+import Button from '../../component/Button/Button';
 
 const cx = classNames.bind(styles);
 
@@ -40,7 +41,19 @@ function Header() {
     async function handleDown() {
         return await navigate(`/search?key=${keySearch}`, { replace: true });
     }
+    var user_name = JSON.parse(sessionStorage.getItem('user')).fullname;
 
+    if (!sessionStorage.getItem('user')) {
+        return (
+            <div className={cx('warning')}>
+                <Link to="/login">
+                    <Button>
+                        <h1>Bạn cần đăng nhập</h1>
+                    </Button>
+                </Link>
+            </div>
+        );
+    }
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner-header') + ' container'}>
@@ -55,7 +68,7 @@ function Header() {
                         className={cx('search-bar') + ' p-2'}
                         onChange={(e) => setKeySearch(e.target.value)}
                         onKeyDown={(e) => {
-                            if (e.key == 'Enter') {
+                            if (e.key === 'Enter') {
                                 handleDown();
                                 e.target.value = '';
                             }
@@ -156,11 +169,13 @@ function Header() {
                     zIndex={999}
                 >
                     <Link to="/viewProfile">
-                        <button className={cx('user')}>
-                            <FontAwesomeIcon className={cx('iconUser')} icon={faUser} />
-                            <p>username</p>
-                            <FontAwesomeIcon className={cx('iconDown')} icon={faAngleDown} />
-                        </button>
+                        <div>
+                            <Button className={cx('user')}>
+                                <FontAwesomeIcon className={cx('iconUser')} icon={faUser} />
+                                <p>{user_name}</p>
+                                <FontAwesomeIcon className={cx('iconDown')} icon={faAngleDown} />
+                            </Button>
+                        </div>
                     </Link>
                 </Tippy>
             </div>

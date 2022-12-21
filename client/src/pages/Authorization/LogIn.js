@@ -58,7 +58,7 @@ function LogIn() {
     // Generate JSX code for error message
     const renderErrorMessage = (name) =>
         name === errorMessages.name && <div className="error">{errorMessages.message}</div>;
-
+    var user_name = JSON.parse(sessionStorage.getItem('user')).fullname;
     const renderForm = (
         <form name="Login" onSubmit={handleSubmit}>
             <h2 class="header">Đăng nhập</h2>
@@ -95,9 +95,14 @@ function LogIn() {
                 <div className={cx('form')}>
                     <div class="box">
                         {isSubmitted ? (
-                            <a href="./">
-                                <button className={cx('submit')}>Đi vào trang chủ</button>
-                            </a>
+                            <div>
+                                <a href="./">
+                                    <button className={cx('submit')}>{user_name}</button>
+                                </a>
+                                <a href="./login">
+                                    <button className={cx('submit2')}>Hủy</button>
+                                </a>
+                            </div>
                         ) : (
                             renderForm
                         )}

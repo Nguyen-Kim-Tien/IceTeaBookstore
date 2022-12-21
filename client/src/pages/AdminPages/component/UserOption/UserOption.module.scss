@@ -1,8 +1,10 @@
 .wrapper {
     background-color: #fff;
     box-shadow: 1px 1px 6px #ccc;
+    border: #000 solid;
+    margin-right: 70px;
     .item {
-        padding: 8px;
+        padding: 12px 25px;
         margin: 0;
         display: block;
         text-align: left;
@@ -10,5 +12,6 @@
 }
 
 .item:hover {
-    background-color: #ddd;
+    background-color: green;
+    color: #fff;
 }
